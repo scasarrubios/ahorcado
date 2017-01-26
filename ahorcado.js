@@ -1,28 +1,14 @@
 
-function myFunction() {
-    var x, word;
-    
-
-    // If x is Not a Number or less than one or greater than 10
-    if (isNaN(x) || x < 1 || x > 10) {
-        text = "Input not valid";
-    } else {
-        text = "Input OK";
-    }
-    document.getElementById("demo").innerHTML = text;
-}
-var myWords = ["alcachofa", "colonia", "extremadura"];
+var myWords = ["alcachofa", "colonia", "extremo", "campamento", "programa", "murcielago"];
 var index = Math.round(Math.random()*(myWords.length-1));
 
 function Game() {
 	var word = myWords[index];
-	console.log(word + ' ' + word.length)
 	var progress = ''
 	for (i = 0; i < word.length; i++) {
 	
 	    progress = progress + " _";
 	}
-	console.log(progress)
 	document.getElementById("result").innerHTML = progress;
 	var error = 0;
 	function play() {
@@ -71,6 +57,3 @@ function Game() {
 
 var f = Game();
 
-	//if (word.indexOf(letter) == -1){
-   //         error++;
- //           console.log("Fail: " + letter)
