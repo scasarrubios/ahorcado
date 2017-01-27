@@ -3,27 +3,29 @@ var myWords = ["alcachofa", "colonia", "extremo", "campamento", "programa", "mur
 var index = Math.round(Math.random()*(myWords.length-1));
 
 function Game() {
-	var word = myWords[index];
+	var i;
+	var end = false;
+	var word = myWords[index].toUpperCase();
 	var progress = ''
 	for (i = 0; i < word.length; i++) {
-	
 	    progress = progress + " _";
 	}
 	document.getElementById("result").innerHTML = progress;
 	var error = 0;
 	function play() {
-	
-	    letter = document.getElementById("letter").value;
+			var i;
+	    letter = document.getElementById("letter").value.toUpperCase();
 	    for (i = 0; i < word.length; i++) {
-	        if(letter == word[i]){
-	        
+	        if(letter == word[i] && ! end){
 	            progress = progress.split(' ');
 	            progress[i+1] = word[i];
-	            progress = progress.join(' ');
-	        }else if(i == word.length-1 && word.indexOf(letter) == -1){
+	            progress = progress.join(' ').toUpperCase();
+	        }else if(i == word.length-1 && word.indexOf(letter) == -1 && ! end){
 	            error++;
-	            console.log("Fail: " + letter + ' ' + error);
+	            console.log("Fail: " + letter + ' Errors:' + error);
 	        }
+					//console.log(progress + " " + word)
+			if(progress == word){end = true;}
 	    }
         document.getElementById("result").innerHTML = progress;
         var image = document.getElementById('myImage');
@@ -49,11 +51,11 @@ function Game() {
             case 7:
                 image.src = "end.jpg";
                 document.getElementById("result").innerHTML = word;
+								end = true;
                 break;
         }
 	}
 	return play;
 }
 
-var f = Game();
-
+var play = Game();
