@@ -13,7 +13,7 @@ function Game() {
 	document.getElementById("result").innerHTML = progress;
 	var error = 0;
 	function play() {
-			var i;
+		var i;
 	    letter = document.getElementById("letter").value.toUpperCase();
 	    for (i = 0; i < word.length; i++) {
 	        if(letter == word[i] && ! end){
@@ -24,8 +24,7 @@ function Game() {
 	            error++;
 	            console.log("Fail: " + letter + ' Errors:' + error);
 	        }
-					//console.log(progress + " " + word)
-			if(progress == word){end = true;}
+			if(progress.replace(/\s/g, '') == word){end = true;}
 	    }
         document.getElementById("result").innerHTML = progress;
         var image = document.getElementById('myImage');
@@ -51,7 +50,7 @@ function Game() {
             case 7:
                 image.src = "end.jpg";
                 document.getElementById("result").innerHTML = word;
-								end = true;
+				end = true;
                 break;
         }
 	}
